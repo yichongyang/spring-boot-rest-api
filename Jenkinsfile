@@ -7,19 +7,19 @@ pipeline {
         stage('Build Spring Boot App jar'){
             steps{
                 echo 'Building the spring boot app jar ...'
-                bat "buildSpringBootAppJar.bat"
+                bat 'gradlew build'
             }
         }
         stage('Build Spring Boot App Docker Image'){
             steps{
                 echo 'Building the spring boot app docker image ...'
-                bat "buildSpringBootAppImage.bat"
+                bat 'buildSpringBootAppImage.bat'
             }
         }
         stage('Launch Spring Boot App Docker Containers'){
             steps{
                 echo 'Launching the spring boot app docker containers ...'
-                bat "startSpringBootApp.bat ${CONTAINER_COUNT}"
+                bat 'startSpringBootApp.bat ${CONTAINER_COUNT}'
             }
         }
     }
