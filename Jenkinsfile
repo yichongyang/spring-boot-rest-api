@@ -4,6 +4,12 @@ pipeline {
         CONTAINER_COUNT = 1
     }
     stages{
+         stage('Build Spring Boot App jar'){
+            steps{
+                echo 'Building the spring boot app jar ...'
+                bat 'gradlew build'
+            }
+        }
         stage('Build Spring Boot App Docker Image'){
             steps{
                 echo 'Building the spring boot app docker image ...'
