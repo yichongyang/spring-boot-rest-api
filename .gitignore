@@ -30,7 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
-build.gradle
 bin/main/com/example/jpa/customers/Customer.class
 bin/main/com/example/jpa/customers/CustomerController.class
 bin/main/com/example/jpa/customers/CustomerRepository.class
