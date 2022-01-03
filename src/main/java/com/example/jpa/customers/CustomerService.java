@@ -1,14 +1,11 @@
 package com.example.jpa.customers;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,34 +15,11 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 
-	/*
-	@Autowired
-	List<Customer> customerList;
-
-	@Bean
-	public List<Customer> customerList() {
-		List<Customer> customerList = new ArrayList<Customer>();
-		customerList.add(new Customer("Jack", "Bauer"));
-		customerList.add(new Customer("Chloe", "O'Brian"));
-		customerList.add(new Customer("Kim", "Bauer"));
-		customerList.add(new Customer("David", "Palmer"));
-		customerList.add(new Customer("Michelle", "Dessler"));
-		return customerList;
-	}
-	*/
-
 	@CacheEvict(value = { "customer/id", "customer/lastName", "customers" }, allEntries = true)
 	public Customer addCustomer(Customer customer) {
 		return customerRepository.save(customer);
 	}
 
-	/*
-	@Cacheable("my-customers")
-	public List<Customer> findAllCustomers(){
-		return customerList;
-	}
-	*/
-	
 	@Cacheable("customers")
 	public List<Customer> findAll(){
         try {

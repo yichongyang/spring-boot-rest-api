@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 public class CustomerController {
@@ -25,7 +24,7 @@ public class CustomerController {
         return customerService.findAll();
     }
     
-    @PostMapping(path = "/customer/add", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/customer", consumes = "application/json", produces = "application/json")
     public Customer addCustomer(@Valid @RequestBody Customer customer) {
     	return customerService.addCustomer(customer);
     }
